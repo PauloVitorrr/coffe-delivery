@@ -1,8 +1,14 @@
+import { ThemeProvider } from "styled-components";
+import Home from "./pages/Home";
+import { GlobalStyles } from "./styles/global";
+import { defaultTheme } from "./styles/theme.ts/default";
+
 function App() {
   return (
-    <>
-      <h1>Olá mundo!</h1>
-    </>
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyles />
+      <Home />
+    </ThemeProvider>
   );
 }
 
