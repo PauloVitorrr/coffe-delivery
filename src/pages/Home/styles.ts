@@ -100,3 +100,22 @@ export const ContainerImage = styled.div`
     max-width: 100%;
   }
 `;
+
+export const ContainerCards = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 54px;
+`;
+
+export const TitleCards = styled.h3`
+  font-family: "Baloo 2", sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  color: ${(props) => props.theme["base-subtitle"]};
+`;
+
+export const ContentCards = styled.div`
+  max-width: 1120px;
+  display: flex;
+  flex-wrap: wrap;
+`;

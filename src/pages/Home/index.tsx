@@ -1,9 +1,11 @@
 import { Header } from "../../components/Header";
+import CardsCoffe from "../../components/CardsCoffe";
+import { coffes } from "../../../data.json";
 
-import * as S from "./styles";
+import coffe from "../../../public/images/Coffe.svg";
 
-import coffe from "../../assets/Coffe.svg";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
+import * as S from "./styles";
 
 export default function Home() {
   return (
@@ -57,9 +59,16 @@ export default function Home() {
             </S.ContainerIconsBannerCoffe>
           </S.ContainerLeftBannerCoffe>
           <S.ContainerImage>
-            <img src={coffe} alt="" />
+            <img src={coffe} />
           </S.ContainerImage>
         </S.ContainerBannerCoffe>
+
+        <S.ContainerCards>
+          <S.TitleCards>Nossos cafés</S.TitleCards>
+          <S.ContentCards>
+            <CardsCoffe />
+          </S.ContentCards>
+        </S.ContainerCards>
       </S.Main>
     </>
   );
