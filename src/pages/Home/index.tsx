@@ -2,7 +2,7 @@ import { Header } from "../../components/Header";
 import CardsCoffe from "../../components/CardsCoffe";
 import { coffes } from "../../../data.json";
 
-import coffe from "../../../public/images/Coffe.svg";
+import coffe from "/images/Coffe.svg";
 
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import * as S from "./styles";

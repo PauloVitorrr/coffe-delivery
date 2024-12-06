@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-import logo from "../../../public/images/Logo.svg";
+import logo from "/images/Logo.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
 
 export function Header() {
