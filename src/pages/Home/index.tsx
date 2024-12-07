@@ -66,7 +66,9 @@ export default function Home() {
         <S.ContainerCards>
           <S.TitleCards>Nossos cafés</S.TitleCards>
           <S.ContentCards>
-            <CardsCoffe />
+            {coffes.map((coffe) => (
+              <CardsCoffe key={coffe.id} coffee={coffe} />
+            ))}
           </S.ContentCards>
         </S.ContainerCards>
       </S.Main>

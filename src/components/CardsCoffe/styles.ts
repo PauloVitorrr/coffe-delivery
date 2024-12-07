@@ -23,6 +23,11 @@ export const ImageCoffe = styled.img`
   top: -20px;
 `;
 
+export const ContainerSubtitleImageCoffe = styled.div`
+  display: flex;
+  gap: 4px;
+`;
+
 export const SubtitleImageCoffe = styled.p`
   padding: 4px 8px;
   background-color: ${(props) => props.theme["yellow-light"]};

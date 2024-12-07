@@ -6,7 +6,7 @@ export const Main = styled.main`
   gap: 108px;
   max-width: 1120px;
   margin: 0 auto;
-  padding-top: 94px;
+  padding: 94px 0 20px 0;
 
   @media (max-width: 1128px) {
     padding: 40px;
@@ -118,4 +118,9 @@ export const ContentCards = styled.div`
   max-width: 1120px;
   display: flex;
   flex-wrap: wrap;
+  gap: 32px;
+
+  @media (max-width: 1124px) {
+    justify-content: center;
+  }
 `;
