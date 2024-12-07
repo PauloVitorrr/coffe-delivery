@@ -1,3 +1,4 @@
+import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
 import * as S from "./styles";
 
 import logo from "/images/coffees/americano.png";
@@ -20,8 +21,20 @@ export default function CardsCoffe() {
           </S.SubtitleCard>
         </S.ContentTitleSubtitleCard>
         <S.ContentPriceCart>
-          <S.CurrencyPriceCoffe>R$</S.CurrencyPriceCoffe>
-          <S.PriceCoffe> 9,90</S.PriceCoffe>
+          <S.CurrecyPriceCoffeContainer>
+            <S.CurrencyPriceCoffe>R$</S.CurrencyPriceCoffe>
+            <S.PriceCoffe> 9,90</S.PriceCoffe>
+          </S.CurrecyPriceCoffeContainer>
+          <S.ContainerAmountCart>
+            <S.NumberBuyCoffe>
+              <Minus color="#8047F8" weight="bold" />
+              <S.NumberBuyCoffeTesxt>1</S.NumberBuyCoffeTesxt>
+              <Plus color="#8047F8" weight="bold" />
+            </S.NumberBuyCoffe>
+            <S.ButtonCart>
+              <ShoppingCartSimple color="white" weight="fill" />
+            </S.ButtonCart>
+          </S.ContainerAmountCart>
         </S.ContentPriceCart>
       </S.ContentTitlePrice>
     </S.ContainerCardCoffe>

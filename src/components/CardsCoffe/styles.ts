@@ -68,10 +68,16 @@ export const ContentPriceCart = styled.div`
   gap: 23px;
 `;
 
+export const CurrecyPriceCoffeContainer = styled.div`
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+`;
 export const CurrencyPriceCoffe = styled.p`
   font-family: "Roboto";
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
+  color: ${(props) => props.theme["base-title"]};
 `;
 
 export const PriceCoffe = styled.span`
@@ -79,4 +85,33 @@ export const PriceCoffe = styled.span`
   font-size: 24px;
   font-weight: 800;
   color: ${(props) => props.theme["base-text"]};
+`;
+
+export const ContainerAmountCart = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+export const ButtonCart = styled.div`
+  background-color: ${(props) => props.theme["purple-dark"]};
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+`;
+
+export const NumberBuyCoffe = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: ${(props) => props.theme["base-button"]};
+  gap: 6px;
+  border-radius: 6px;
+`;
+
+export const NumberBuyCoffeTesxt = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${(props) => props.theme["base-title"]};
 `;
