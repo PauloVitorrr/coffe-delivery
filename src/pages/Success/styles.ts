@@ -8,6 +8,10 @@ export const Main = styled.main`
   align-items: center;
 
   padding-top: 80px;
+
+  @media (max-width: 1082px) {
+    padding: 20px;
+  }
 `;
 
 export const ContainerInfosOrder = styled.div`
@@ -19,6 +23,15 @@ export const ContainerInfosOrder = styled.div`
 export const ContentSucessCoffe = styled.div`
   display: flex;
   gap: 40px;
+
+  img {
+    max-width: 100%;
+  }
+
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 export const ContentTextInfosOrder = styled.div`
@@ -39,6 +52,10 @@ export const ContentTextInfosOrder = styled.div`
     font-weight: 400;
     color: ${(props) => props.theme["base-subtitle"]};
   }
+
+  @media (max-width: 992px) {
+    text-align: center;
+  }
 `;
 
 export const CardInfosOrder = styled.div`
@@ -51,6 +68,10 @@ export const CardInfosOrder = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
+
+  @media (max-width: 560px) {
+    padding: 20px;
+  }
 `;
 
 export const InfosOrderCoffe = styled.div`
@@ -63,7 +84,21 @@ export const ContainerTextAddressCoffe = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: ${(props) => props.theme["base-text"]};
-  width: 310px;
+  max-width: 310px;
+  width: 100%;
+  @media (max-width: 434px) {
+    width: 70%;
+    font-size: 14px;
+  }
+`;
+
+export const TitleTextAddressCoffe = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${(props) => props.theme["base-text"]};
+  max-width: 310px;
+  width: 100%;
 `;
 
 export const DeliveryAddressCoffe = styled.span`
@@ -71,6 +106,9 @@ export const DeliveryAddressCoffe = styled.span`
   font-size: 16px;
   font-weight: 700;
   color: ${(props) => props.theme["base-text"]};
+  @media (max-width: 434px) {
+    font-size: 14px;
+  }
 `;
 
 interface ColorProps {

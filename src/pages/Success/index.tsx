@@ -30,9 +30,9 @@ export function Success() {
                 <Timer color="#fff" weight="fill" />
               </S.IconTextOrder>
               <S.ContainerTextDelivery>
-                <S.ContainerTextAddressCoffe>
+                <S.TitleTextAddressCoffe>
                   Previsão de entrega
-                </S.ContainerTextAddressCoffe>
+                </S.TitleTextAddressCoffe>
                 <S.DeliveryAddressCoffe>20 min - 30 min</S.DeliveryAddressCoffe>
               </S.ContainerTextDelivery>
             </S.InfosOrderCoffe>
@@ -41,9 +41,9 @@ export function Success() {
                 <CurrencyDollar color="#fff" weight="bold" />
               </S.IconTextOrder>
               <S.ContainerTextDelivery>
-                <S.ContainerTextAddressCoffe>
+                <S.TitleTextAddressCoffe>
                   Pagamento na entrega
-                </S.ContainerTextAddressCoffe>
+                </S.TitleTextAddressCoffe>
                 <S.DeliveryAddressCoffe>
                   Cartão de Crédito
                 </S.DeliveryAddressCoffe>
