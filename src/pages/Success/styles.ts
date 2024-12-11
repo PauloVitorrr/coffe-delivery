@@ -5,6 +5,7 @@ export const Main = styled.main`
   gap: 102px;
   max-width: 1056px;
   margin: 0 auto;
+  align-items: center;
 
   padding-top: 80px;
 `;
@@ -12,6 +13,11 @@ export const Main = styled.main`
 export const ContainerInfosOrder = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 40px;
+`;
+
+export const ContentSucessCoffe = styled.div`
+  display: flex;
   gap: 40px;
 `;
 
@@ -47,12 +53,42 @@ export const CardInfosOrder = styled.div`
   gap: 32px;
 `;
 
-export const IconTextOrder = styled.div`
+export const InfosOrderCoffe = styled.div`
+  display: flex;
+  gap: 12px;
+`;
+
+export const ContainerTextAddressCoffe = styled.p`
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: ${(props) => props.theme["base-text"]};
+  width: 310px;
+`;
+
+export const DeliveryAddressCoffe = styled.span`
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: ${(props) => props.theme["base-text"]};
+`;
+
+interface ColorProps {
+  color: string;
+}
+
+export const IconTextOrder = styled.div<ColorProps>`
   width: 32px;
   height: 32px;
   border-radius: 1000px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme["yellow"]};
+
+  background-color: ${(props) => props.color};
+`;
+
+export const ContainerTextDelivery = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

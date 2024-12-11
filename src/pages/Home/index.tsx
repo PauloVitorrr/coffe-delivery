@@ -1,4 +1,3 @@
-import { Header } from "../../components/Header";
 import CardsCoffe from "../../components/CardsCoffe";
 import { coffes } from "../../../data.json";
 
