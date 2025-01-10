@@ -1,3 +1,4 @@
+import { Input } from "../../components/Input";
 import * as S from "./styles";
 
 export default function Checkout() {
@@ -7,6 +8,7 @@ export default function Checkout() {
         <S.TitlesOrder>Complete seu pedido</S.TitlesOrder>
         <S.ContentInfosOrder>
           <p>aaaa</p>
+          <Input />
         </S.ContentInfosOrder>
         <p>aaaaa</p>
       </S.ContainerInfosOrder>

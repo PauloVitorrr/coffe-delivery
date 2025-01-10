@@ -38,4 +38,5 @@ export const TitlesOrder = styled.h6`
 export const ContentInfosOrder = styled.div`
   padding: 40px;
   background-color: ${(props) => props.theme["base-card"]};
+  border-radius: 8px;
 `;
