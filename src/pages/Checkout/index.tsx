@@ -1,3 +1,10 @@
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPin,
+  Money,
+} from "phosphor-react";
 import { Input } from "../../components/Input";
 import * as S from "./styles";
 
@@ -6,11 +13,71 @@ export default function Checkout() {
     <S.Main>
       <S.ContainerInfosOrder>
         <S.TitlesOrder>Complete seu pedido</S.TitlesOrder>
-        <S.ContentInfosOrder>
-          <p>aaaa</p>
-          <Input />
-        </S.ContentInfosOrder>
-        <p>aaaaa</p>
+        <S.ContentInfosOrderPay>
+          <S.ContainerTextDeliveryAndPay>
+            <MapPin size={20} color="#C47F17" />
+            <S.ContentTextDeliveryAndPay>
+              <span>Endereço de entrega</span>
+              <p>Informe o endereço onde deseja receber seu pedido</p>
+            </S.ContentTextDeliveryAndPay>
+          </S.ContainerTextDeliveryAndPay>
+          <S.ContainerInputs>
+            <Input
+              placeholder="CEP"
+              containerProps={{ style: { gridArea: "cep" } }}
+            />
+            <Input
+              placeholder="Rua"
+              containerProps={{ style: { gridArea: "street" } }}
+            />
+            <Input
+              placeholder="Número"
+              containerProps={{ style: { gridArea: "number" } }}
+            />
+            <Input
+              placeholder="Complemento"
+              containerProps={{ style: { gridArea: "fullAddress" } }}
+            />
+            <Input
+              placeholder="Bairro"
+              containerProps={{ style: { gridArea: "neighborhood" } }}
+            />
+            <Input
+              placeholder="Cidade"
+              containerProps={{ style: { gridArea: "city" } }}
+            />
+            <Input
+              placeholder="UF"
+              containerProps={{ style: { gridArea: "state" } }}
+            />
+          </S.ContainerInputs>
+        </S.ContentInfosOrderPay>
+        <S.ContentInfosOrderPay>
+          <S.ContainerTextDeliveryAndPay>
+            <CurrencyDollar size={20} color="#8047F8" />
+            <S.ContentTextDeliveryAndPay>
+              <span>Pagamento</span>
+              <p>
+                O pagamento é feito na entrega. escolha a forma que deseja pagar
+              </p>
+            </S.ContentTextDeliveryAndPay>
+          </S.ContainerTextDeliveryAndPay>
+
+          <S.PaymentMethods>
+            <S.CardsPaymentMethods>
+              <CreditCard size={20} color="#8047F8" />
+              <span>CARTÃO DE CRÉDITO</span>
+            </S.CardsPaymentMethods>
+            <S.CardsPaymentMethods>
+              <Bank size={20} color="#8047F8" />
+              <span>CARTÃO DE CRÉDITO</span>
+            </S.CardsPaymentMethods>
+            <S.CardsPaymentMethods>
+              <Money size={20} color="#8047F8" />
+              <span>CARTÃO DE CRÉDITO</span>
+            </S.CardsPaymentMethods>
+          </S.PaymentMethods>
+        </S.ContentInfosOrderPay>
       </S.ContainerInfosOrder>
       <S.ContainerCoffeOrderSelect>
         <S.TitlesOrder>Cafés selecionados</S.TitlesOrder>
