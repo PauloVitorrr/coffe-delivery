@@ -105,3 +105,75 @@ export const CardsPaymentMethods = styled.div`
     font-size: 12px;
   }
 `;
+
+export const ContainerCoffeSelect = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  padding: 40px;
+
+  background-color: ${(props) => props.theme["base-card"]};
+  border-radius: 6px 44px 6px 44px;
+`;
+
+export const ContentCoffeSelect = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  max-width: 448px;
+`;
+
+export const InfosCoffeSelect = styled.div`
+  span {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    color: ${(props) => props.theme["base-subtitle"]};
+    font-weight: 400;
+  }
+
+  div {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+`;
+
+export const ButtonRemoveCoffe = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 6.5px;
+  background-color: ${(props) => props.theme["base-button"]};
+  border-radius: 6px;
+
+  :hover {
+    opacity: 0.9;
+  }
+  span {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: ${(props) => props.theme["base-text"]};
+    font-size: 12px;
+  }
+`;
+
+export const ButtonAmountCoffe = styled.div`
+  display: flex;
+  align-items: center;
+
+  background-color: ${(props) => props.theme["base-button"]};
+  padding: 5.5px;
+  border-radius: 6px;
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  span {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+  }
+`;

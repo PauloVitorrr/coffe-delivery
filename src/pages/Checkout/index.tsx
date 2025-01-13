@@ -3,10 +3,15 @@ import {
   CreditCard,
   CurrencyDollar,
   MapPin,
+  Minus,
   Money,
+  Plus,
+  Trash,
 } from "phosphor-react";
 import { Input } from "../../components/Input";
 import * as S from "./styles";
+
+import coffe from "../../../public/images/coffees/americano.png";
 
 export default function Checkout() {
   return (
@@ -81,6 +86,30 @@ export default function Checkout() {
       </S.ContainerInfosOrder>
       <S.ContainerCoffeOrderSelect>
         <S.TitlesOrder>Cafés selecionados</S.TitlesOrder>
+        <S.ContainerCoffeSelect>
+          <S.ContentCoffeSelect>
+            <img src={coffe} alt="" width="64px" />
+            <S.InfosCoffeSelect>
+              <span>Expresso tradicional</span>
+              <div>
+                <S.ButtonAmountCoffe>
+                  <button>
+                    <Minus color="#8047F8" />
+                  </button>
+                  <span>1</span>
+                  <button>
+                    <Plus color="#8047F8" />
+                  </button>
+                </S.ButtonAmountCoffe>
+                <S.ButtonRemoveCoffe>
+                  <Trash color="#8047F8" />
+                  <span>REMOVER</span>
+                </S.ButtonRemoveCoffe>
+              </div>
+            </S.InfosCoffeSelect>
+            <p>R$ 19,80</p>
+          </S.ContentCoffeSelect>
+        </S.ContainerCoffeSelect>
       </S.ContainerCoffeOrderSelect>
     </S.Main>
   );
