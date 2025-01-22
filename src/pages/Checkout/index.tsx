@@ -107,8 +107,31 @@ export default function Checkout() {
                 </S.ButtonRemoveCoffe>
               </div>
             </S.InfosCoffeSelect>
-            <p>R$ 19,80</p>
+            <S.PriceCoffe>R$ 19,80</S.PriceCoffe>
           </S.ContentCoffeSelect>
+          <S.ContentCoffeSelect>
+            <img src={coffe} alt="" width="64px" />
+            <S.InfosCoffeSelect>
+              <span>Expresso tradicional</span>
+              <div>
+                <S.ButtonAmountCoffe>
+                  <button>
+                    <Minus color="#8047F8" />
+                  </button>
+                  <span>1</span>
+                  <button>
+                    <Plus color="#8047F8" />
+                  </button>
+                </S.ButtonAmountCoffe>
+                <S.ButtonRemoveCoffe>
+                  <Trash color="#8047F8" />
+                  <span>REMOVER</span>
+                </S.ButtonRemoveCoffe>
+              </div>
+            </S.InfosCoffeSelect>
+            <S.PriceCoffe>R$ 19,80</S.PriceCoffe>
+          </S.ContentCoffeSelect>
+          <S.ButtonConfirmOrder>CONFIRMAR PEDIDO</S.ButtonConfirmOrder>
         </S.ContainerCoffeSelect>
       </S.ContainerCoffeOrderSelect>
     </S.Main>

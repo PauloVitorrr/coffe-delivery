@@ -122,6 +122,9 @@ export const ContentCoffeSelect = styled.div`
   justify-content: space-between;
   gap: 8px;
   max-width: 448px;
+
+  padding-bottom: 24px;
+  border-bottom: 1px solid ${(props) => props.theme["base-button"]};
 `;
 
 export const InfosCoffeSelect = styled.div`
@@ -176,4 +179,23 @@ export const ButtonAmountCoffe = styled.div`
     font-weight: 400;
     font-size: 16px;
   }
+`;
+
+export const PriceCoffe = styled.p`
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: ${(props) => props.theme["base-text"]};
+`;
+
+export const ButtonConfirmOrder = styled.button`
+  width: 100%;
+  background-color: ${(props) => props.theme["yellow"]};
+  color: ${(props) => props.theme["white"]};
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+
+  padding: 12px 0;
+  border: none;
+  border-radius: 4px;
 `;
