@@ -112,6 +112,12 @@ export const NumberBuyCoffe = styled.div`
   background-color: ${(props) => props.theme["base-button"]};
   gap: 6px;
   border-radius: 6px;
+
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
 `;
 
 export const NumberBuyCoffeTesxt = styled.p`

@@ -8,6 +8,7 @@ function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyles />
+
       <Header />
       <Outlet />
     </ThemeProvider>

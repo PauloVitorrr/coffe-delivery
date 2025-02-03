@@ -1,5 +1,6 @@
 import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
 import * as S from "./styles";
+import { useState } from "react";
 
 type Props = {
   coffee: {
@@ -13,6 +14,18 @@ type Props = {
 };
 
 export default function CardsCoffe({ coffee }: Props) {
+  const [quantity, setQuantity] = useState(0);
+
+  function handleAddQuantity() {
+    setQuantity((state) => state + 1);
+  }
+
+  function handleSubstractQuantity() {
+    if (quantity > 0) {
+      setQuantity((state) => state - 1);
+    }
+  }
+
   return (
     <S.ContainerCardCoffe>
       <S.ContainerImageSubtitleCoffe>
@@ -38,9 +51,13 @@ export default function CardsCoffe({ coffee }: Props) {
           </S.CurrecyPriceCoffeContainer>
           <S.ContainerAmountCart>
             <S.NumberBuyCoffe>
-              <Minus color="#8047F8" weight="bold" />
-              <S.NumberBuyCoffeTesxt>1</S.NumberBuyCoffeTesxt>
-              <Plus color="#8047F8" weight="bold" />
+              <button onClick={() => handleSubstractQuantity()}>
+                <Minus color="#8047F8" weight="bold" />
+              </button>
+              <S.NumberBuyCoffeTesxt>{quantity}</S.NumberBuyCoffeTesxt>
+              <button onClick={() => handleAddQuantity()}>
+                <Plus color="#8047F8" weight="bold" />
+              </button>
             </S.NumberBuyCoffe>
             <S.ButtonCart>
               <ShoppingCartSimple color="white" weight="fill" />
