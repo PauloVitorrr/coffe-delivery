@@ -1,5 +1,26 @@
-import React, { createContext } from "react";
+import React, { createContext, ReactNode, useState } from "react";
 
-const Context = createContext(0);
+interface CartType {
+  id: number;
+  quantity: number;
+}
 
-export default Context;
+interface CartContextType {
+  cart: CartType[];
+}
+
+const CartContext = createContext({} as CartContextType);
+
+interface CartContextProviderType {
+  children: ReactNode;
+}
+
+export function CartContextProvider({ children }: CartContextProviderType) {
+  const [cart, setCart] = useState<CartType[]>([]);
+
+  return (
+    <CartContext.Provider value={{ cart }}>{children}</CartContext.Provider>
+  );
+}
+
+export default CartContext;

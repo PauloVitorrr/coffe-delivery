@@ -1,6 +1,7 @@
 import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
 import * as S from "./styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import CartContext from "../../contexts/CartProvider";
 
 type Props = {
   coffee: {
@@ -15,6 +16,12 @@ type Props = {
 
 export default function CardsCoffe({ coffee }: Props) {
   const [quantity, setQuantity] = useState(0);
+
+  const { cart } = useContext(CartContext);
+
+  function handleAddToCart() {
+    // setQntd(quantity);
+  }
 
   function handleAddQuantity() {
     setQuantity((state) => state + 1);
@@ -59,7 +66,7 @@ export default function CardsCoffe({ coffee }: Props) {
                 <Plus color="#8047F8" weight="bold" />
               </button>
             </S.NumberBuyCoffe>
-            <S.ButtonCart>
+            <S.ButtonCart onClick={() => handleAddToCart()}>
               <ShoppingCartSimple color="white" weight="fill" />
             </S.ButtonCart>
           </S.ContainerAmountCart>

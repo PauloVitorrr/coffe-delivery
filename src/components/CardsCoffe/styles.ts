@@ -103,6 +103,7 @@ export const ButtonCart = styled.div`
   align-items: center;
   padding: 8px;
   border-radius: 8px;
+  cursor: pointer;
 `;
 
 export const NumberBuyCoffe = styled.div`
