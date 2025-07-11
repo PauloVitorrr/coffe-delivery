@@ -1,6 +1,6 @@
 import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
 import * as S from "./styles";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartContext from "../../contexts/CartProvider";
 
 type Props = {
@@ -16,11 +16,17 @@ type Props = {
 
 export default function CardsCoffe({ coffee }: Props) {
   const [quantity, setQuantity] = useState(0);
+  const [isItemAdded, setIsItemAdded] = useState(false);
 
-  const { cart } = useContext(CartContext);
+  const { addItem } = useContext(CartContext);
+
+  console.log(quantity);
 
   function handleAddToCart() {
-    // setQntd(quantity);
+    addItem({ id: coffee.id, quantity });
+    console.log(coffee.id, quantity, "teste");
+    setIsItemAdded(true);
+    setQuantity(1);
   }
 
   function handleAddQuantity() {
@@ -32,6 +38,22 @@ export default function CardsCoffe({ coffee }: Props) {
       setQuantity((state) => state - 1);
     }
   }
+
+  useEffect(() => {
+    let timeout: number;
+
+    if (isItemAdded) {
+      timeout = setTimeout(() => {
+        setIsItemAdded(false);
+      }, 1000);
+    }
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+    };
+  }, [isItemAdded]);
 
   return (
     <S.ContainerCardCoffe>

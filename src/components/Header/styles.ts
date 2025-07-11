@@ -36,4 +36,25 @@ export const ContentCart = styled.div`
   padding: 6px;
   background-color: ${(props) => props.theme["yellow-light"]};
   border-radius: 4px;
+  position: relative;
+
+  div {
+    background-color: ${(props) => props.theme["yellow-dark"]};
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 28px;
+    top: -8px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      color: ${(props) => props.theme["white"]};
+      text-align: center;
+      font-family: "Roboto", sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
 `;
