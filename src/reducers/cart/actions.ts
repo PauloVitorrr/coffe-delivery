@@ -52,3 +52,21 @@ export function removeItemAction(itemId: Item["id"]) {
     },
   } satisfies Actions;
 }
+
+export function decrementItemQuantityAction(itemId: Item["id"]) {
+  return {
+    type: ActionTypes.DECREMENT_ITEM_QUANTITY,
+    payload: {
+      itemId,
+    },
+  } satisfies Actions;
+}
+
+export function incrementItemQuantityAction(itemId: Item["id"]) {
+  return {
+    type: ActionTypes.INCREMENT_ITEM_QUANTITY,
+    payload: {
+      itemId,
+    },
+  } satisfies Actions;
+}

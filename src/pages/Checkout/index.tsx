@@ -11,9 +11,10 @@ import {
 import { Input } from "../../components/Input";
 import * as S from "./styles";
 
-import coffe from "../../../public/images/coffees/americano.png";
 import z from "zod";
 import { useCart } from "../../hooks/useCart";
+import { coffes } from "../../../data.json";
+import { Fragment } from "react/jsx-runtime";
 
 const newOrder = z.object({
   cep: z.number({ invalid_type_error: "Informe o CEP" }),
@@ -31,9 +32,33 @@ const newOrder = z.object({
 export type OrderInfo = z.infer<typeof newOrder>;
 
 export default function Checkout() {
-  const { cart } = useCart();
+  const { cart, incrementItemQuantity, decrementItemQuantity, removeItem } =
+    useCart();
 
-  console.log(cart, "cart");
+  const coffeesInCart = cart.map((item) => {
+    const coffeeInfo = coffes.find((coffee) => coffee.id === item.id);
+
+    if (!coffeeInfo) {
+      throw new Error("Invalid coffe.");
+    }
+
+    return {
+      ...coffeeInfo,
+      quantity: item.quantity,
+    };
+  });
+
+  function handleItemIncrement(itemId: string) {
+    incrementItemQuantity(itemId);
+  }
+
+  function handleItemDecrement(itemId: string) {
+    decrementItemQuantity(itemId);
+  }
+
+  function handleRemoveItem(itemId: string) {
+    removeItem(itemId);
+  }
 
   return (
     <S.Main>
@@ -108,50 +133,40 @@ export default function Checkout() {
       <S.ContainerCoffeOrderSelect>
         <S.TitlesOrder>Cafés selecionados</S.TitlesOrder>
         <S.ContainerCoffeSelect>
-          <S.ContentCoffeSelect>
-            <img src={coffe} alt="" width="64px" />
-            <S.InfosCoffeSelect>
-              <span>Expresso tradicional</span>
-              <div>
-                <S.ButtonAmountCoffe>
-                  <button>
-                    <Minus color="#8047F8" />
-                  </button>
-                  <span>1</span>
-                  <button>
-                    <Plus color="#8047F8" />
-                  </button>
-                </S.ButtonAmountCoffe>
-                <S.ButtonRemoveCoffe>
-                  <Trash color="#8047F8" />
-                  <span>REMOVER</span>
-                </S.ButtonRemoveCoffe>
-              </div>
-            </S.InfosCoffeSelect>
-            <S.PriceCoffe>R$ 19,80</S.PriceCoffe>
-          </S.ContentCoffeSelect>
-          <S.ContentCoffeSelect>
-            <img src={coffe} alt="" width="64px" />
-            <S.InfosCoffeSelect>
-              <span>Expresso tradicional</span>
-              <div>
-                <S.ButtonAmountCoffe>
-                  <button>
-                    <Minus color="#8047F8" />
-                  </button>
-                  <span>1</span>
-                  <button>
-                    <Plus color="#8047F8" />
-                  </button>
-                </S.ButtonAmountCoffe>
-                <S.ButtonRemoveCoffe>
-                  <Trash color="#8047F8" />
-                  <span>REMOVER</span>
-                </S.ButtonRemoveCoffe>
-              </div>
-            </S.InfosCoffeSelect>
-            <S.PriceCoffe>R$ 19,80</S.PriceCoffe>
-          </S.ContentCoffeSelect>
+          {coffeesInCart.map((coffe) => (
+            <Fragment key={coffe.id}>
+              <S.ContentCoffeSelect>
+                <img src={coffe.image} alt="" width="64px" />
+                <S.InfosCoffeSelect>
+                  <span>{coffe.title}</span>
+                  <div>
+                    <S.ButtonAmountCoffe>
+                      <button onClick={() => handleItemDecrement(coffe.id)}>
+                        <Minus color="#8047F8" />
+                      </button>
+                      <span>{coffe.quantity}</span>
+                      <button onClick={() => handleItemIncrement(coffe.id)}>
+                        <Plus color="#8047F8" />
+                      </button>
+                    </S.ButtonAmountCoffe>
+                    <S.ButtonRemoveCoffe
+                      onClick={() => handleRemoveItem(coffe.id)}
+                    >
+                      <Trash color="#8047F8" />
+                      <span>REMOVER</span>
+                    </S.ButtonRemoveCoffe>
+                  </div>
+                </S.InfosCoffeSelect>
+                <S.PriceCoffe>R${coffe.price?.toFixed(2)}</S.PriceCoffe>
+              </S.ContentCoffeSelect>
+            </Fragment>
+          ))}
+          <S.ContainerPaymentPrice>
+            <div>
+              <p>1</p>
+              <p>2</p>
+            </div>
+          </S.ContainerPaymentPrice>
           <S.ButtonConfirmOrder>CONFIRMAR PEDIDO</S.ButtonConfirmOrder>
         </S.ContainerCoffeSelect>
       </S.ContainerCoffeOrderSelect>

@@ -142,12 +142,14 @@ export const InfosCoffeSelect = styled.div`
   }
 `;
 
-export const ButtonRemoveCoffe = styled.div`
+export const ButtonRemoveCoffe = styled.button`
   display: flex;
   align-items: center;
   padding: 6.5px;
   background-color: ${(props) => props.theme["base-button"]};
   border-radius: 6px;
+  border: none;
+  cursor: pointer;
 
   :hover {
     opacity: 0.9;
@@ -186,6 +188,13 @@ export const PriceCoffe = styled.p`
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   color: ${(props) => props.theme["base-text"]};
+`;
+export const ContainerPaymentPrice = styled.div`
+  width: 100%;
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export const ButtonConfirmOrder = styled.button`
