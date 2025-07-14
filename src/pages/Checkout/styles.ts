@@ -190,10 +190,31 @@ export const PriceCoffe = styled.p`
   color: ${(props) => props.theme["base-text"]};
 `;
 export const ContainerPaymentPrice = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   width: 100%;
-  > div {
+
+  div {
     display: flex;
+    align-items: center;
     justify-content: space-between;
+
+    span {
+      font-family: "Roboto", sans-serif;
+      color: ${(props) => props.theme["base-text"]};
+    }
+  }
+
+  span:last-child {
+    font-family: "Roboto", sans-serif;
+  }
+
+  div:last-child {
+    span {
+      font-family: "Roboto", sans-serif;
+      font-weight: bold;
+    }
   }
 `;
 

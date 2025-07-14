@@ -48,6 +48,10 @@ export default function Checkout() {
     };
   });
 
+  const totalItemsPrice = coffeesInCart.reduce((previousValue, currentItem) => {
+    return (previousValue += currentItem.price * currentItem.quantity);
+  }, 0);
+
   function handleItemIncrement(itemId: string) {
     incrementItemQuantity(itemId);
   }
@@ -59,6 +63,8 @@ export default function Checkout() {
   function handleRemoveItem(itemId: string) {
     removeItem(itemId);
   }
+
+  const shippingPrice = 3.5;
 
   return (
     <S.Main>
@@ -163,8 +169,33 @@ export default function Checkout() {
           ))}
           <S.ContainerPaymentPrice>
             <div>
-              <p>1</p>
-              <p>2</p>
+              <span>Total de itens</span>
+              <span>
+                {new Intl.NumberFormat("pt-br", {
+                  currency: "BRL",
+                  style: "currency",
+                }).format(totalItemsPrice)}
+              </span>
+            </div>
+
+            <div>
+              <span>Entrega</span>
+              <span>
+                {new Intl.NumberFormat("pt-br", {
+                  currency: "BRL",
+                  style: "currency",
+                }).format(shippingPrice)}
+              </span>
+            </div>
+
+            <div>
+              <span>Total</span>
+              <span>
+                {new Intl.NumberFormat("pt-br", {
+                  currency: "BRL",
+                  style: "currency",
+                }).format(totalItemsPrice + shippingPrice)}
+              </span>
             </div>
           </S.ContainerPaymentPrice>
           <S.ButtonConfirmOrder>CONFIRMAR PEDIDO</S.ButtonConfirmOrder>
