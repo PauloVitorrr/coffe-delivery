@@ -43,3 +43,12 @@ export function addItemAction(item: Item) {
     },
   } satisfies Actions;
 }
+
+export function removeItemAction(itemId: Item["id"]) {
+  return {
+    type: ActionTypes.REMOVE_ITEM,
+    payload: {
+      itemId,
+    },
+  } satisfies Actions;
+}

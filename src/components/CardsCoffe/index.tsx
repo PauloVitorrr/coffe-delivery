@@ -15,12 +15,10 @@ type Props = {
 };
 
 export default function CardsCoffe({ coffee }: Props) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [isItemAdded, setIsItemAdded] = useState(false);
 
   const { addItem } = useContext(CartContext);
-
-  console.log(quantity);
 
   function handleAddToCart() {
     addItem({ id: coffee.id, quantity });

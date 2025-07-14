@@ -13,6 +13,7 @@ import * as S from "./styles";
 
 import coffe from "../../../public/images/coffees/americano.png";
 import z from "zod";
+import { useCart } from "../../hooks/useCart";
 
 const newOrder = z.object({
   cep: z.number({ invalid_type_error: "Informe o CEP" }),
@@ -30,6 +31,10 @@ const newOrder = z.object({
 export type OrderInfo = z.infer<typeof newOrder>;
 
 export default function Checkout() {
+  const { cart } = useCart();
+
+  console.log(cart, "cart");
+
   return (
     <S.Main>
       <S.ContainerInfosOrder>

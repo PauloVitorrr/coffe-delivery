@@ -6,7 +6,7 @@ import {
   useState,
 } from "react";
 import { cartReducer, Item } from "../reducers/cart/reducer";
-import { addItemAction } from "../reducers/cart/actions";
+import { addItemAction, removeItemAction } from "../reducers/cart/actions";
 
 interface CartType {
   id: number;
@@ -16,6 +16,7 @@ interface CartType {
 interface CartContextType {
   cart: Item[];
   addItem: (item: Item) => void;
+  removeItem: (itemId: Item["id"]) => void;
 }
 
 const CartContext = createContext({} as CartContextType);
@@ -48,7 +49,9 @@ export function CartContextProvider({ children }: CartContextProviderType) {
     dispatch(addItemAction(item));
   }
 
-  console.log(cartState, "cart state");
+  function removeItem(itemId: Item["id"]) {
+    dispatch(removeItemAction(itemId));
+  }
 
   useEffect(() => {
     if (cartState) {
@@ -59,7 +62,7 @@ export function CartContextProvider({ children }: CartContextProviderType) {
   }, [cartState]);
 
   return (
-    <CartContext.Provider value={{ cart, addItem }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem }}>
       {children}
     </CartContext.Provider>
   );
