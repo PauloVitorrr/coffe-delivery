@@ -25,6 +25,7 @@ interface CartContextProviderType {
 }
 
 export function CartContextProvider({ children }: CartContextProviderType) {
+  //aplicando o useReducer para manipular o carrinho de compras
   const [cartState, dispatch] = useReducer(
     cartReducer,
     {
@@ -44,11 +45,10 @@ export function CartContextProvider({ children }: CartContextProviderType) {
 
   const { cart, orders } = cartState;
 
+  //funcao que atualiza e usa o typeAction para adicionar o item ao carrinho
   function addItem(item: Item) {
     dispatch(addItemAction(item));
   }
-
-  console.log(cartState, "cart state");
 
   useEffect(() => {
     if (cartState) {

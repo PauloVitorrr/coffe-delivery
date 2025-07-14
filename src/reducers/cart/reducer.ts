@@ -15,11 +15,14 @@ interface CartState {
   cart: Item[];
   orders: Order[];
 }
+
+//função para manipular o carrinho conforme o type selecionado
+
 export function cartReducer(state: CartState, action: Actions) {
   switch (action.type) {
     case ActionTypes.ADD_ITEM:
-      console.log("caindo aqui!");
-
+      // o immer foi utilizado para manipular objetos complexos e facilitar
+      // a manipulação dos dados
       return produce(state, (draft) => {
         const itemAlreadyAdded = draft.cart.find(
           (item) => item.id === action.payload.item.id

@@ -11,6 +11,8 @@ export enum ActionTypes {
   CHECKOUT_CART = "CHECKOUT_CART",
 }
 
+//serve como um identificador único para uma ação especifica
+
 export type Actions =
   | {
       type: ActionTypes.ADD_ITEM;
