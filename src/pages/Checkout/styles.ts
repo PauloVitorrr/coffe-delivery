@@ -6,6 +6,15 @@ export const Main = styled.main`
 
   max-width: 1120px;
   margin: 0 auto;
+  @media (max-width: 1183px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 600px) {
+    padding-bottom: 8px;
+  }
 `;
 
 export const ContainerInfosOrder = styled.section`
@@ -40,6 +49,10 @@ export const ContentInfosOrderPay = styled.div`
   background-color: ${(props) => props.theme["base-card"]};
   border-radius: 8px;
   max-width: 640px;
+  @media (max-width: 768px) {
+    width: 368px;
+    padding: 6px;
+  }
 `;
 
 export const ContainerTextDeliveryAndPay = styled.div`
@@ -65,7 +78,7 @@ export const ContentTextDeliveryAndPay = styled.div`
   }
 `;
 
-export const ContainerInputs = styled.div`
+export const formAdress = styled.form`
   display: grid;
   grid-template-areas:
     "cep . ."
@@ -76,6 +89,19 @@ export const ContainerInputs = styled.div`
   gap: 16px;
 
   margin-top: 32px;
+
+  @media (max-width: 768px) {
+    grid-template-areas:
+      "cep"
+      "street"
+      "number"
+      "fullAddress"
+      "neighborhood"
+      "city"
+      "state";
+    grid-template-columns: 1fr;
+    grid-gap: 12px;
+  }
 `;
 
 export const PaymentMethods = styled.div`
@@ -104,6 +130,10 @@ export const CardsPaymentMethods = styled.div`
     color: ${(props) => props.theme["base-text"]};
     font-size: 12px;
   }
+
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
 `;
 
 export const ContainerCoffeSelect = styled.div`
@@ -115,6 +145,7 @@ export const ContainerCoffeSelect = styled.div`
 
   background-color: ${(props) => props.theme["base-card"]};
   border-radius: 6px 44px 6px 44px;
+  max-width: 448px;
 `;
 
 export const ContentCoffeSelect = styled.div`
