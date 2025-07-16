@@ -13,8 +13,21 @@ import * as S from "./styles";
 
 import z from "zod";
 import { useCart } from "../../hooks/useCart";
-import { coffes } from "../../../data.json";
+import { coffees } from "../../../data.json";
 import { Fragment } from "react/jsx-runtime";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+type FormInputs = {
+  cep: number;
+  street: string;
+  number: string;
+  fullAddress: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  paymentMethod: "credit" | "debit" | "cash";
+};
 
 const newOrder = z.object({
   cep: z.number({ invalid_type_error: "Informe o CEP" }),
@@ -35,8 +48,17 @@ export default function Checkout() {
   const { cart, incrementItemQuantity, decrementItemQuantity, removeItem } =
     useCart();
 
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<FormInputs>({
+    resolver: zodResolver(newOrder),
+  });
+
   const coffeesInCart = cart.map((item) => {
-    const coffeeInfo = coffes.find((coffee) => coffee.id === item.id);
+    const coffeeInfo = coffees.find((coffee) => coffee.id === item.id);
 
     if (!coffeeInfo) {
       throw new Error("Invalid coffe.");
@@ -78,36 +100,50 @@ export default function Checkout() {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </S.ContentTextDeliveryAndPay>
           </S.ContainerTextDeliveryAndPay>
-          <S.ContainerInputs>
+          <S.formAdress>
             <Input
               placeholder="CEP"
               containerProps={{ style: { gridArea: "cep" } }}
+              error={errors.cep}
+              {...register("cep", { valueAsNumber: true })}
             />
             <Input
               placeholder="Rua"
               containerProps={{ style: { gridArea: "street" } }}
+              error={errors.street}
+              {...register("street")}
             />
             <Input
               placeholder="Número"
               containerProps={{ style: { gridArea: "number" } }}
+              error={errors.number}
+              {...register("number")}
             />
             <Input
               placeholder="Complemento"
               containerProps={{ style: { gridArea: "fullAddress" } }}
+              error={errors.fullAddress}
+              {...register("fullAddress")}
             />
             <Input
               placeholder="Bairro"
               containerProps={{ style: { gridArea: "neighborhood" } }}
+              error={errors.neighborhood}
+              {...register("neighborhood")}
             />
             <Input
               placeholder="Cidade"
               containerProps={{ style: { gridArea: "city" } }}
+              error={errors.city}
+              {...register("city")}
             />
             <Input
               placeholder="UF"
               containerProps={{ style: { gridArea: "state" } }}
+              error={errors.state}
+              {...register("state")}
             />
-          </S.ContainerInputs>
+          </S.formAdress>
         </S.ContentInfosOrderPay>
         <S.ContentInfosOrderPay>
           <S.ContainerTextDeliveryAndPay>

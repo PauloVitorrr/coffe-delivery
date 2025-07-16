@@ -1,5 +1,5 @@
 import CardsCoffe from "../../components/CardsCoffe";
-import { coffes } from "../../../data.json";
+import { coffees } from "../../../data.json";
 
 import coffe from "/images/Coffe.svg";
 
@@ -63,7 +63,7 @@ export default function Home() {
       <S.ContainerCards>
         <S.TitleCards>Nossos cafés</S.TitleCards>
         <S.ContentCards>
-          {coffes.map((coffe) => (
+          {coffees.map((coffe) => (
             <CardsCoffe key={coffe.id} coffee={coffe} />
           ))}
         </S.ContentCards>
