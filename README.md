@@ -1,50 +1,75 @@
-# React + TypeScript + Vite
+<h1 align="center" style="font-weight: bold;"> Coffe Delivery 💻</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+ <a href="#tech">Tecnologias</a> • 
+ <a href="#started">Iniciando projeto</a> • 
+  <a href="#colab">Colaborador</a> •
+ <a href="#contribute">Contribuição</a>
+</p>
 
-Currently, two official plugins are available:
+<p align="center">
+    <b>Entregando o seu café onde estiver.</b>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align="center">
+     <a href="https://github.com/PauloVitorrr/coffe-delivery">📱 Visit this Project</a>
+</p>
 
-## Expanding the ESLint configuration
+<h2 id="layout">🎨 Layout</h2>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<p align="center">
+    <img src="./public/images/gifReadme/image1.gif" alt="Image Example" width="400px">
+    <img src="./public/images/gifReadme/image2.png" alt="Image Example" width="400px">
+</p>
 
-- Configure the top-level `parserOptions` property like this:
+<h2 id="technologies">💻 Technologies</h2>
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React
+- Styled components
+- React hook form
+- Zod
+- playwright
+
+<h2 id="started">🚀 Iniciando o projeto</h2>
+
+<h3>Pre requisitos</h3>
+
+Aqui está todos os requisitos que voce precisa para rodar o projeto:
+
+- [NodeJS](https://nodejs.org/en/download)
+- [Git](https://git-scm.com/downloads)
+
+<h3>Clone</h3>
+
+Como clonar o repositorio
+
+```bash
+git clone https://github.com/PauloVitorrr/coffee-delivery.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+<h3>Iniciando</h3>
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Como iniciar o projeto
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+cd coffee-delivery
+npm install
 ```
+
+<h2 id="colab">🤝 Collaborators</h2>
+
+Colaborador único do projeto
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/102882298?v=4" width="100px;" alt="Fernanda Kipper Profile Picture"/><br>
+        <sub>
+          <b>Paulo Vitor</b>
+        </sub>
+      </a>
+    </td>
+  
+  </tr>
+</table>
