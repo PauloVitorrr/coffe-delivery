@@ -4,7 +4,6 @@
  <a href="#tech">Tecnologias</a> • 
  <a href="#started">Iniciando projeto</a> • 
   <a href="#colab">Colaborador</a> •
- <a href="#contribute">Contribuição</a>
 </p>
 
 <p align="center">
@@ -70,6 +69,5 @@ Colaborador único do projeto
         </sub>
       </a>
     </td>
-  
   </tr>
 </table>
