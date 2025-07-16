@@ -1,11 +1,14 @@
 import { createContext, ReactNode, useEffect, useReducer } from "react";
-import { cartReducer, Item } from "../reducers/cart/reducer";
+import { cartReducer, Item, Order } from "../reducers/cart/reducer";
 import {
   addItemAction,
+  checkoutCartAction,
   decrementItemQuantityAction,
   incrementItemQuantityAction,
   removeItemAction,
 } from "../reducers/cart/actions";
+import { OrderInfo } from "../pages/Checkout";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 interface CartContextType {
   cart: Item[];
@@ -13,6 +16,8 @@ interface CartContextType {
   removeItem: (itemId: Item["id"]) => void;
   incrementItemQuantity: (itemId: Item["id"]) => void;
   decrementItemQuantity: (ItemId: Item["id"]) => void;
+  checkout: (order: OrderInfo) => void;
+  orders: Order[];
 }
 
 const CartContext = createContext({} as CartContextType);
@@ -41,6 +46,8 @@ export function CartContextProvider({ children }: CartContextProviderType) {
 
   const { cart, orders } = cartState;
 
+  const navigate = useNavigate();
+
   function addItem(item: Item) {
     dispatch(addItemAction(item));
   }
@@ -55,6 +62,10 @@ export function CartContextProvider({ children }: CartContextProviderType) {
 
   function incrementItemQuantity(itemId: Item["id"]) {
     dispatch(incrementItemQuantityAction(itemId));
+  }
+
+  function checkout(order: OrderInfo) {
+    dispatch(checkoutCartAction(order, navigate));
   }
 
   useEffect(() => {
@@ -73,6 +84,8 @@ export function CartContextProvider({ children }: CartContextProviderType) {
         removeItem,
         incrementItemQuantity,
         decrementItemQuantity,
+        orders,
+        checkout,
       }}
     >
       {children}

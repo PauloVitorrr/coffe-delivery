@@ -8,15 +8,16 @@ import {
   Plus,
   Trash,
 } from "phosphor-react";
-import { Input } from "../../components/Input";
+import { Input } from "../../components/Form/Input";
 import * as S from "./styles";
 
 import z from "zod";
 import { useCart } from "../../hooks/useCart";
 import { coffees } from "../../../data.json";
 import { Fragment } from "react/jsx-runtime";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Radio } from "../../components/Form/Radio";
 
 type FormInputs = {
   cep: number;
@@ -45,8 +46,13 @@ const newOrder = z.object({
 export type OrderInfo = z.infer<typeof newOrder>;
 
 export default function Checkout() {
-  const { cart, incrementItemQuantity, decrementItemQuantity, removeItem } =
-    useCart();
+  const {
+    cart,
+    incrementItemQuantity,
+    decrementItemQuantity,
+    removeItem,
+    checkout,
+  } = useCart();
 
   const {
     register,
@@ -88,6 +94,15 @@ export default function Checkout() {
 
   const shippingPrice = 3.5;
 
+  const selectedPaymentMethod = watch("paymentMethod");
+
+  const handleOrderCheckout: SubmitHandler<FormInputs> = (data) => {
+    if (cart.length === 0) {
+      return alert("É preciso ter pelo menos um item no carrinho");
+    }
+    checkout(data);
+  };
+
   return (
     <S.Main>
       <S.ContainerInfosOrder>
@@ -100,10 +115,11 @@ export default function Checkout() {
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </S.ContentTextDeliveryAndPay>
           </S.ContainerTextDeliveryAndPay>
-          <S.formAdress>
+          <S.formAdress id="order" onSubmit={handleSubmit(handleOrderCheckout)}>
             <Input
               placeholder="CEP"
               containerProps={{ style: { gridArea: "cep" } }}
+              type="number"
               error={errors.cep}
               {...register("cep", { valueAsNumber: true })}
             />
@@ -141,6 +157,7 @@ export default function Checkout() {
               placeholder="UF"
               containerProps={{ style: { gridArea: "state" } }}
               error={errors.state}
+              maxLength={2}
               {...register("state")}
             />
           </S.formAdress>
@@ -156,7 +173,42 @@ export default function Checkout() {
             </S.ContentTextDeliveryAndPay>
           </S.ContainerTextDeliveryAndPay>
 
-          <S.PaymentMethods>
+          <S.PaymentOptions>
+            <div>
+              <Radio
+                isSelected={selectedPaymentMethod === "credit"}
+                {...register("paymentMethod")}
+                value="credit"
+              >
+                <CreditCard size={16} />
+                <span>Credito</span>
+              </Radio>
+
+              <Radio
+                isSelected={selectedPaymentMethod === "debit"}
+                {...register("paymentMethod")}
+                value="debit"
+              >
+                <Bank size={16} />
+                <span>Débito</span>
+              </Radio>
+
+              <Radio
+                isSelected={selectedPaymentMethod === "cash"}
+                {...register("paymentMethod")}
+                value="cash"
+              >
+                <Money size={16} />
+                <span>Dinheiro</span>
+              </Radio>
+            </div>
+            {errors.paymentMethod ? (
+              <S.PaymentErrorMessage>
+                {errors.paymentMethod.message}
+              </S.PaymentErrorMessage>
+            ) : null}
+          </S.PaymentOptions>
+          {/* <S.PaymentMethods>
             <S.CardsPaymentMethods>
               <CreditCard size={20} color="#8047F8" />
               <span>CARTÃO DE CRÉDITO</span>
@@ -169,7 +221,7 @@ export default function Checkout() {
               <Money size={20} color="#8047F8" />
               <span>CARTÃO DE CRÉDITO</span>
             </S.CardsPaymentMethods>
-          </S.PaymentMethods>
+          </S.PaymentMethods> */}
         </S.ContentInfosOrderPay>
       </S.ContainerInfosOrder>
       <S.ContainerCoffeOrderSelect>
@@ -234,7 +286,9 @@ export default function Checkout() {
               </span>
             </div>
           </S.ContainerPaymentPrice>
-          <S.ButtonConfirmOrder>CONFIRMAR PEDIDO</S.ButtonConfirmOrder>
+          <S.ButtonConfirmOrder type="submit" form="order">
+            CONFIRMAR PEDIDO
+          </S.ButtonConfirmOrder>
         </S.ContainerCoffeSelect>
       </S.ContainerCoffeOrderSelect>
     </S.Main>

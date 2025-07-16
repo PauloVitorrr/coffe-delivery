@@ -12,10 +12,11 @@ import { FieldError } from "react-hook-form";
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   containerProps?: HTMLAttributes<HTMLDivElement>;
   error?: FieldError;
+  optional?: boolean;
 };
 
 export const Input = forwardRef(function Input(
-  { containerProps, error, onBlur, ...rest }: Props,
+  { optional, containerProps, error, onBlur, ...rest }: Props,
   ref: LegacyRef<HTMLInputElement>
 ) {
   const [isFocused, setIsFocused] = useState(false);
@@ -39,7 +40,12 @@ export const Input = forwardRef(function Input(
           onBlur={handleBlur}
           {...rest}
         />
+
+        {optional ? <span>Opcional</span> : null}
       </S.Container>
+      {error?.message ? (
+        <S.ErrorMessage role="alert">{error.message}</S.ErrorMessage>
+      ) : null}
     </S.Box>
   );
 });

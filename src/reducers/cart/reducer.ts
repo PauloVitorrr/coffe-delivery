@@ -18,8 +18,6 @@ interface CartState {
 export function cartReducer(state: CartState, action: Actions) {
   switch (action.type) {
     case ActionTypes.ADD_ITEM:
-      console.log("caindo aqui!");
-
       return produce(state, (draft) => {
         const itemAlreadyAdded = draft.cart.find(
           (item) => item.id === action.payload.item.id
@@ -73,7 +71,7 @@ export function cartReducer(state: CartState, action: Actions) {
         draft.orders.push(newOrder);
         draft.cart = [];
 
-        action.payload.callback(`/order/${newOrder.id}/sucess`);
+        action.payload.callback(`/order/${newOrder.id}/success`);
       });
 
     default:

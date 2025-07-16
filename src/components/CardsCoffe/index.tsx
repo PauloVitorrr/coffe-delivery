@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingCartSimple } from "phosphor-react";
+import { Check, Minus, Plus, ShoppingCartSimple } from "phosphor-react";
 import * as S from "./styles";
 import { useContext, useEffect, useState } from "react";
 import CartContext from "../../contexts/CartProvider";
@@ -87,7 +87,11 @@ export default function CardsCoffe({ coffee }: Props) {
               </button>
             </S.NumberBuyCoffe>
             <S.ButtonCart onClick={() => handleAddToCart()}>
-              <ShoppingCartSimple color="white" weight="fill" />
+              {isItemAdded ? (
+                <Check weight="fill" size={22} color={"#F3F2F2"} />
+              ) : (
+                <ShoppingCartSimple size={22} color="white" weight="fill" />
+              )}
             </S.ButtonCart>
           </S.ContainerAmountCart>
         </S.ContentPriceCart>

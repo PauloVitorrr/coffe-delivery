@@ -1,9 +1,25 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
 import * as S from "./styles";
 
-import imga from "/images/Illustration.svg";
+import img from "/images/Illustration.svg";
+import { useCart } from "../../hooks/useCart";
+import { useParams } from "react-router-dom";
 
 export function Success() {
+  const { orders } = useCart();
+  const { orderId } = useParams();
+  const orderInfo = orders.find((order) => order.id === Number(orderId));
+
+  const paymentMethod = {
+    credit: "Crédito",
+    debit: "Débito",
+    cash: "Dinheiro",
+  };
+
+  if (!orderInfo?.id) {
+    return null;
+  }
+
   return (
     <S.Main>
       <S.ContainerInfosOrder>
@@ -20,9 +36,9 @@ export function Success() {
               <S.ContainerTextAddressCoffe>
                 Entrega em{" "}
                 <S.DeliveryAddressCoffe>
-                  Rua João Daniel Martinelli, 102
+                  {orderInfo.street}, {orderInfo.number}
                 </S.DeliveryAddressCoffe>{" "}
-                Farrapos - Porto Alegre, RS
+                {orderInfo.neighborhood} - {orderInfo.city}, , {orderInfo.state}
               </S.ContainerTextAddressCoffe>
             </S.InfosOrderCoffe>
             <S.InfosOrderCoffe>
@@ -45,12 +61,12 @@ export function Success() {
                   Pagamento na entrega
                 </S.TitleTextAddressCoffe>
                 <S.DeliveryAddressCoffe>
-                  Cartão de Crédito
+                  {paymentMethod[orderInfo.paymentMethod]}
                 </S.DeliveryAddressCoffe>
               </S.ContainerTextDelivery>
             </S.InfosOrderCoffe>
           </S.CardInfosOrder>
-          <img src={imga} alt="" />
+          <img src={img} alt="" />
         </S.ContentSucessCoffe>
       </S.ContainerInfosOrder>
     </S.Main>

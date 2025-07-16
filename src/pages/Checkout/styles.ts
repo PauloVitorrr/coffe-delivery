@@ -86,7 +86,7 @@ export const formAdress = styled.form`
     "number fullAddress fullAddress"
     "neighborhood city state";
   grid-template-columns: 200px 1fr 60px;
-  gap: 16px;
+  gap: 16px 12px;
 
   margin-top: 32px;
 
@@ -108,6 +108,32 @@ export const PaymentMethods = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
+`;
+
+export const PaymentOptions = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    & > span {
+      font-family: "Roboto", sans-serif;
+      color: ${(props) => props.theme["base-text"]};
+      font-size: 12px;
+    }
+  }
+`;
+
+export const PaymentErrorMessage = styled.p`
+  font-weight: 400;
+  color: red;
+  font-family: "Roboto", sans-serif;
 `;
 
 export const CardsPaymentMethods = styled.div`
@@ -259,4 +285,5 @@ export const ButtonConfirmOrder = styled.button`
   padding: 12px 0;
   border: none;
   border-radius: 4px;
+  cursor: pointer;
 `;

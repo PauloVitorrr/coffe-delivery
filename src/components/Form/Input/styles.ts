@@ -19,11 +19,11 @@ export const Container = styled.label`
   transition: all 0.2s;
 
   &[data-state="focused"] {
-    border-color: ${({ theme }) => theme.colors["yellow-dark"]};
+    border-color: ${(props) => props.theme["yellow-dark"]};
   }
 
   &[data-state="blurred"] {
-    border-color: ${({ theme }) => theme.colors["base-button"]};
+    border-color: ${(props) => props.theme["base-button"]};
   }
 `;
 
@@ -36,12 +36,13 @@ export const Input = styled.input`
   color: ${(props) => props.theme["base-text"]};
   font-weight: 400;
   font-size: 14px;
+  width: 100%;
 
   &:focus {
     outline: none;
   }
   &::placeholder {
-    color: ${({ theme }) => theme.colors["base-label"]};
+    color: ${(props) => props.theme["base-label"]};
   }
 `;
 

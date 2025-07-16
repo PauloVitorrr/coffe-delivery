@@ -70,3 +70,16 @@ export function incrementItemQuantityAction(itemId: Item["id"]) {
     },
   } satisfies Actions;
 }
+
+export function checkoutCartAction(
+  order: OrderInfo,
+  callback: NavigateFunction
+) {
+  return {
+    type: ActionTypes.CHECKOUT_CART,
+    payload: {
+      order,
+      callback,
+    },
+  } satisfies Actions;
+}

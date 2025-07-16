@@ -20,8 +20,7 @@ const router = createBrowserRouter([
         element: <Checkout />,
       },
       {
-        // path: "/order/:orderId/success",
-        path: "/success",
+        path: "/order/:orderId/success",
         element: <Success />,
       },
     ],
